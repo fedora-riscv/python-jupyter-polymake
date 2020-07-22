@@ -37,7 +37,6 @@ Requires:       python3dist(ipython)
 Requires:       python3dist(jupymake)
 Requires:       python3dist(jupyter-client)
 Requires:       python3dist(pexpect)
-%{?python_provide:%python_provide python3-%{srcname}}
 
 # This can be removed when Fedora 31 reaches EOL
 Obsoletes:      polymake-jupyter < 0.16-11
