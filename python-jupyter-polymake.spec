@@ -18,11 +18,11 @@ Source0:        %{url}/archive/%{commit}/%{srcname}-%{shortcommit}.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  python3-devel
-BuildRequires:  python3dist(ipykernel)
-BuildRequires:  python3dist(ipython)
-BuildRequires:  python3dist(jupymake)
-BuildRequires:  python3dist(jupyter-client)
-BuildRequires:  python3dist(pexpect)
+BuildRequires:  %{py3_dist ipykernel}
+BuildRequires:  %{py3_dist ipython}
+BuildRequires:  %{py3_dist jupymake}
+BuildRequires:  %{py3_dist jupyter-client}
+BuildRequires:  %{py3_dist pexpect}
 
 %global _description %{expand:
 This package contains a Jupyter kernel for polymake.}
@@ -32,11 +32,11 @@ This package contains a Jupyter kernel for polymake.}
 %package     -n python3-%{srcname}
 Summary:        Jupyter kernel for polymake
 Requires:       python-jupyter-filesystem
-Requires:       python3dist(ipykernel)
-Requires:       python3dist(ipython)
-Requires:       python3dist(jupymake)
-Requires:       python3dist(jupyter-client)
-Requires:       python3dist(pexpect)
+Requires:       %{py3_dist ipykernel}
+Requires:       %{py3_dist ipython}
+Requires:       %{py3_dist jupymake}
+Requires:       %{py3_dist jupyter-client}
+Requires:       %{py3_dist pexpect}
 
 # This can be removed when Fedora 31 reaches EOL
 Obsoletes:      polymake-jupyter < 0.16-11
