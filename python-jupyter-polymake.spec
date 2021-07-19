@@ -59,6 +59,9 @@ mv %{buildroot}%{python3_sitelib}/jupyter_kernel_polymake/resources/* \
    %{buildroot}%{_datadir}/jupyter/kernels/polymake
 rmdir %{buildroot}%{python3_sitelib}/jupyter_kernel_polymake/resources
 
+%check
+%py3_check_import jupyter_kernel_polymake
+
 %files       -n python3-%{srcname}
 %doc README.md
 %license LICENSE
