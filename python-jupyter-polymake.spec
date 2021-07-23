@@ -8,7 +8,7 @@
 
 Name:           python-%{srcname}
 Version:        0.16
-Release:        16.%{gitdate}.%{shortcommit}%{?dist}
+Release:        17.%{gitdate}.%{shortcommit}%{?dist}
 Summary:        Jupyter kernel for polymake
 
 License:        WTFPL
@@ -69,6 +69,9 @@ rmdir %{buildroot}%{python3_sitelib}/jupyter_kernel_polymake/resources
 %{python3_sitelib}/jupyter_kernel_polymake*
 
 %changelog
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 0.16-17.20180129.7049940
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 0.16-16.20180129.7049940
 - Rebuilt for Python 3.10
 
