@@ -23,6 +23,8 @@ BuildRequires:  %{py3_dist ipython}
 BuildRequires:  %{py3_dist jupymake}
 BuildRequires:  %{py3_dist jupyter-client}
 BuildRequires:  %{py3_dist pexpect}
+BuildRequires:  %{py3_dist pip}
+BuildRequires:  %{py3_dist wheel}
 
 %global _description %{expand:
 This package contains a Jupyter kernel for polymake.}
@@ -38,20 +40,16 @@ Requires:       %{py3_dist jupymake}
 Requires:       %{py3_dist jupyter-client}
 Requires:       %{py3_dist pexpect}
 
-# This can be removed when Fedora 31 reaches EOL
-Obsoletes:      polymake-jupyter < 0.16-11
-Provides:       polymake-jupyter = %{version}-%{release}
-
 %description -n python3-%{srcname} %_description
 
 %prep
 %autosetup -n %{srcname}-%{commit}
 
 %build
-%py3_build
+%pyproject_wheel
 
 %install
-%py3_install
+%pyproject_install
 
 # Move the jupyter kernel files to where we want them in Fedora
 mkdir -p %{buildroot}%{_datadir}/jupyter/kernels/polymake
