@@ -4,18 +4,19 @@
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global gitdate 20180129
 
-%global srcname jupyter-polymake
-
-Name:           python-%{srcname}
+Name:           python-jupyter-polymake
 Version:        0.16
 Release:        19.%{gitdate}.%{shortcommit}%{?dist}
 Summary:        Jupyter kernel for polymake
 
 License:        WTFPL
-URL:            https://github.com/polymake/%{srcname}
-Source0:        %{url}/archive/%{commit}/%{srcname}-%{shortcommit}.tar.gz
+URL:            https://github.com/polymake/jupyter-polymake
+Source0:        %{url}/archive/%{commit}/jupyter-polymake-%{shortcommit}.tar.gz
 
+# Polymake is no longer available on 32-bit platforms
+# See https://fedoraproject.org/wiki/Changes/EncourageI686LeafRemoval
 BuildArch:      noarch
+ExclusiveArch:  noarch aarch64 ppc64le s390x x86_64
 
 BuildRequires:  python3-devel
 BuildRequires:  %{py3_dist ipykernel}
@@ -31,7 +32,7 @@ This package contains a Jupyter kernel for polymake.}
 
 %description %_description
 
-%package     -n python3-%{srcname}
+%package     -n python3-jupyter-polymake
 Summary:        Jupyter kernel for polymake
 Requires:       python-jupyter-filesystem
 Requires:       %{py3_dist ipykernel}
@@ -40,10 +41,10 @@ Requires:       %{py3_dist jupymake}
 Requires:       %{py3_dist jupyter-client}
 Requires:       %{py3_dist pexpect}
 
-%description -n python3-%{srcname} %_description
+%description -n python3-jupyter-polymake %_description
 
 %prep
-%autosetup -n %{srcname}-%{commit}
+%autosetup -n jupyter-polymake-%{commit}
 
 %build
 %pyproject_wheel
@@ -60,13 +61,15 @@ rmdir %{buildroot}%{python3_sitelib}/jupyter_kernel_polymake/resources
 %check
 %py3_check_import jupyter_kernel_polymake
 
-%files       -n python3-%{srcname}
+%files -n python3-jupyter-polymake
 %doc README.md
-%license LICENSE
 %{_datadir}/jupyter/kernels/polymake/
 %{python3_sitelib}/jupyter_kernel_polymake*
 
 %changelog
+* Tue Jul 19 2022 Jerry James <loganjerry@gmail.com> - 0.16-19.20180129.7049940
+- Do not build on i386 due to unavailability of polymake
+
 * Wed Jun 15 2022 Python Maint <python-maint@redhat.com> - 0.16-19.20180129.7049940
 - Rebuilt for Python 3.11
 
