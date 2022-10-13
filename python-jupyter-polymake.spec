@@ -9,7 +9,8 @@ Version:        0.16
 Release:        21.%{gitdate}.%{shortcommit}%{?dist}
 Summary:        Jupyter kernel for polymake
 
-License:        WTFPL
+# The code is WTFPL.  The JavaScript and image files are MIT.
+License:        WTFPL AND MIT
 URL:            https://github.com/polymake/jupyter-polymake
 Source0:        %{url}/archive/%{commit}/jupyter-polymake-%{shortcommit}.tar.gz
 
@@ -25,8 +26,8 @@ BuildRequires:  %{py3_dist jupymake}
 BuildRequires:  %{py3_dist jupyter-client}
 BuildRequires:  %{py3_dist pexpect}
 BuildRequires:  %{py3_dist pip}
-BuildRequires:  %{py3_dist wheel}
 BuildRequires:  %{py3_dist setuptools}
+BuildRequires:  %{py3_dist wheel}
 
 %global _description %{expand:
 This package contains a Jupyter kernel for polymake.}
@@ -68,6 +69,9 @@ rmdir %{buildroot}%{python3_sitelib}/jupyter_kernel_polymake/resources
 %{python3_sitelib}/jupyter_kernel_polymake*
 
 %changelog
+* Thu Oct 13 2022 Jerry James <loganjerry@gmail.com> - 0.16-21.20180129.7049940
+- Add MIT to the license tag
+
 * Thu Oct 13 2022 Karolina Surma <ksurma@redhat.com> - 0.16-21.20180129.7049940
 - Explicitly BuildRequire python-setuptools
 
